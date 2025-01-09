@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="center">
+        <input type="text" class="input">
+        <button class="button">Проверить</button>
+        <div class="div"></div>
+    </div>
+    <script>
+        const mbNumber = document.querySelector('.input').value
+        const div = document.querySelector('.div')
+        const button = document.querySelector('.button')
+
+        button.addEventListener('click', () => {
+            try {
+                if (isNaN(mbNumber)) {
+                    throw new Error("Введенное значение не является числом")
+                }
+                div.textContent = `Введеное значение являеться числом`
+                
+            } catch (error) {
+                div.textContent = error.message
+            }
+        })
+
+    </script>
+    <script src="js.js"></script>
+</body>
+
+</html>
