@@ -10,9 +10,7 @@ button.addEventListener('click', () => {
     loadPhoto()
 })
 
-heart.addEventListener('click', (e) => {
-    p.textContent = Number(p.textContent) + 1
-})
+
 
 async function fetchPhotos() {
     try {
@@ -22,18 +20,23 @@ async function fetchPhotos() {
     } catch (error) {
         console.error('Ошибка');
         return [];
-        
+
     }
 }
 
 async function loadPhoto() {
     const photos = await fetchPhotos();
-    
+
     if (photos.length > 0) {
         let mt = Math.round(Math.random() * 10);
         img.src = photos[mt].urls.small
         authorName.textContent = photos[mt].user.name;
     }
+    
+    const heart = document.querySelector('.photo').querySelector('.heart');
+    heart.addEventListener('click', (e) => {
+        p.textContent = Number(p.textContent) + 1
+    })
 }
 
 document.addEventListener('load', loadPhoto())
